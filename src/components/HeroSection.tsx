@@ -33,7 +33,7 @@ export function HeroSection() {
               <a href="https://www.linkedin.com/in/orazio-petito/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="LinkedIn">
                 <LinkedinIcon className="w-6 h-6" />
               </a>
-              <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="Resume">
+              <a href="/Orazio_Petito_Resume_6_30_2025.pdf" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-indigo-600 transition-colors" aria-label="Resume">
                 <FileTextIcon className="w-6 h-6" />
               </a>
             </div>

@@ -100,7 +100,7 @@ export function ContactSection() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold">Resume</h4>
-                  <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">
+                  <a href="/Orazio_Petito_Resume_6_30_2025.pdf" target="_blank" rel="noopener noreferrer" className="text-indigo-600 hover:underline">
                     Download PDF Resume
                   </a>
                 </div>

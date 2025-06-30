@@ -12,7 +12,7 @@ export function AboutSection() {
           </p>
         </div>
         <div className="flex justify-center mb-10">
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-md transition-colors shadow-md">
+          <a href="/Orazio_Petito_Resume_6_30_2025.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-md transition-colors shadow-md">
             <FileTextIcon className="w-5 h-5 mr-2" />
             Download Resume
           </a>

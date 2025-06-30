@@ -18,7 +18,7 @@ export function ProjectsSection() {
     image: 'https://images.unsplash.com/photo-1506784983877-45594efa4cbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1168&q=80',
     technologies: ['React', 'Web Scraping', 'Calendar API', 'JavaScript'],
     category: 'web',
-    liveUrl: 'https://example.com',
+    liveUrl: null,
     githubUrl: 'https://github.com/OrazioP26'
   }, {
     id: 3,
@@ -102,11 +102,20 @@ export function ProjectsSection() {
                     </span>)}
                 </div>
                 <div className="flex justify-between">
-                  {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-indigo-600 hover:text-indigo-800 transition-colors">
+                  {project.liveUrl ? (
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-indigo-600 hover:text-indigo-800 transition-colors">
                       <ExternalLinkIcon className="w-4 h-4 mr-1" />
                       <span>Live Demo</span>
-                    </a>}
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-indigo-600 hover:text-indigo-800 transition-colors"></a>
+                    </a>
+                  ) : (
+                    <span className="flex items-center text-gray-500">
+                      <span>Coming Soon</span>
+                    </span>
+                  )}
+                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center text-indigo-600 hover:text-indigo-800 transition-colors">
+                    <GithubIcon className="w-4 h-4 mr-1" />
+                    <span>GitHub</span>
+                  </a>
                 </div>
               </div>
             </div>)}
