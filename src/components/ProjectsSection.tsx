@@ -11,16 +11,15 @@ type Project = {
 };
 
 const featured: Project = {
-  title: 'Pitchly AI',
+  title: 'Novl',
   blurb:
-    'A browser workspace for building branded decks — fast. One prompt → draft. Tight controls → consistent output.',
+    'AI-native slide building and editing — with the reliability and control real teams need.',
   highlights: [
-    'Built an editor-like UI that stays responsive under heavy documents',
-    'Focused on deterministic formatting + brand consistency',
-    'Designed for real workflows (templates, constraints, approvals)'
+    'Template-aware workflows with “human-in-the-loop” approvals',
+    'Focus on deterministic formatting + brand consistency',
+    'Built for high-output teams (consulting, finance, operators)'
   ],
-  technologies: ['TypeScript', 'React', 'Tailwind', 'Canvas/UI', 'LLMs'],
-  liveUrl: 'https://pitchly-ai.com/',
+  technologies: ['TypeScript', 'React', 'Office.js', 'LLMs', 'Formatting engine'],
   githubUrl: 'https://github.com/OrazioP26'
 };
 

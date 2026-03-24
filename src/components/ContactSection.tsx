@@ -18,10 +18,10 @@ export function ContactSection() {
           <div className="mt-6 flex flex-wrap gap-3">
             <a
               className="btn-primary no-underline"
-              href="mailto:oraziopetito@gmail.com"
+              href="mailto:opp2@cornell.edu"
             >
               <MailIcon className="mr-2 h-4 w-4" />
-              oraziopetito@gmail.com
+              opp2@cornell.edu
             </a>
             <a className="btn-ghost no-underline" href="#home">
               Back to top

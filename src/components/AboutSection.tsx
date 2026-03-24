@@ -10,11 +10,11 @@ type TimelineItem = {
 
 const experience: TimelineItem[] = [
   {
-    title: 'Co-Founder, CEO & CTO',
-    org: 'Pitchly AI',
-    when: 'May 2025 — Present',
+    title: 'Founder',
+    org: 'Novl',
+    when: '2025 — Present',
     description:
-      'Building a browser workspace for decks with a focus on speed, brand consistency, and deterministic editing.'
+      'Building AI-native slide editing and generation workflows with a focus on reliability, taste, and control.'
   },
   {
     title: 'Software Engineering Intern',
