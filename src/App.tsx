@@ -7,15 +7,17 @@ import { ProjectsSection } from './components/ProjectsSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 export function App() {
-  return <div className="font-sans bg-gray-50 text-gray-800">
+  return (
+    <div className="min-h-screen font-sans bg-paper-1 text-ink-1">
       <Header />
       <main>
         <HeroSection />
+        <ProjectsSection />
         <AboutSection />
         <SkillsSection />
-        <ProjectsSection />
         <ContactSection />
       </main>
       <Footer />
-    </div>;
+    </div>
+  );
 }

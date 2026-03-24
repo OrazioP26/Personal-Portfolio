@@ -1,5 +1,67 @@
-/* PLEASE NOTE: THESE TAILWIND IMPORTS SHOULD NEVER BE DELETED */
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-/* DO NOT DELETE THESE TAILWIND IMPORTS, OTHERWISE THE STYLING WILL NOT RENDER AT ALL */
+
+/*
+  Minimal, high-contrast base styling.
+  Intentionally avoids “template gradients” and default Tailwind indigo vibes.
+*/
+
+:root {
+  color-scheme: light;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper-1 text-ink-1 antialiased;
+  }
+
+  ::selection {
+    background: rgba(0, 212, 255, 0.25);
+  }
+
+  a {
+    @apply underline underline-offset-4 decoration-ink-3/30 hover:decoration-ink-1;
+  }
+
+  /* Accessible focus ring */
+  :focus-visible {
+    outline: 2px solid rgba(0, 212, 255, 0.9);
+    outline-offset: 2px;
+    border-radius: 10px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  }
+
+  .section {
+    @apply py-14 md:py-20;
+  }
+
+  .kicker {
+    @apply font-mono text-xs tracking-widest text-ink-3/70;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition;
+  }
+
+  .btn-primary {
+    @apply btn bg-ink-1 text-paper-1 hover:bg-ink-2;
+  }
+
+  .btn-ghost {
+    @apply btn bg-paper-2 text-ink-1 hover:bg-paper-3;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border border-ink-3/15 bg-paper-2 px-3 py-1 text-xs text-ink-2;
+  }
+}
