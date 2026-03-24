@@ -1,82 +1,99 @@
 import React from 'react';
 import { CodeIcon, ServerIcon, LayoutIcon, DatabaseIcon } from 'lucide-react';
+
+function SkillList({ skills }: { skills: string[] }) {
+  return (
+    <div className="mt-4 flex flex-wrap gap-2">
+      {skills.map(s => (
+        <span key={s} className="chip">
+          {s}
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export function SkillsSection() {
-  const frontendSkills = ['HTML/CSS', 'JavaScript', 'TypeScript', 'React', 'Tailwind CSS', 'Responsive Design', 'UI/UX Basics', 'Figma'];
-  const backendSkills = ['Python', 'Java', 'Node.js', 'Express', 'Spring Boot', 'FastAPI', 'REST APIs', 'OCaml', 'C#'];
-  const databaseSkills = ['PostgreSQL', 'SQL', 'Database Design', 'Data Modeling', 'ORM Tools', 'Data Structures', 'Algorithms'];
-  const otherSkills = ['Git & GitHub', 'GitHub Actions', 'Docker', 'Agile/Scrum', 'Machine Learning', 'Algorithmic Trading', 'Statistical Analysis', 'Team Leadership'];
-  return <section id="skills" className="py-16 md:py-24 bg-gray-50">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">My Skills</h2>
-          <div className="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A comprehensive showcase of my technical skills and competencies
-            across various technologies and domains
+  // Curated: keep it high-signal. We can expand later if you want.
+  const core = {
+    frontend: ['TypeScript', 'React', 'Tailwind', 'UI systems'],
+    backend: ['Node.js', 'Python', 'APIs', 'Data pipelines'],
+    cs: ['Algorithms', 'Data structures', 'Graphs', 'Performance'],
+    ops: ['Git', 'Docker', 'CI', 'Shipping fast']
+  } as const;
+
+  const familiar = [
+    'Java',
+    'Postgres/SQL',
+    'Express',
+    'Firebase',
+    'Figma',
+    'OCaml',
+    'C#'
+  ];
+
+  return (
+    <section id="skills" className="section bg-paper-2">
+      <div className="container-page">
+        <div className="mb-10">
+          <div className="kicker">SKILLS</div>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+            What I’m strong at
+          </h2>
+          <p className="mt-3 max-w-2xl text-ink-2">
+            I’m best when I can own the full loop: prototype → product → polish →
+            ship.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Frontend Skills */}
-          <div className="bg-white p-6 rounded-lg shadow-md transition-transform hover:scale-105">
-            <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
-              <CodeIcon className="w-8 h-8 text-indigo-600" />
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <div className="rounded-xl border border-ink-3/15 bg-paper-1 p-5">
+            <div className="flex items-center gap-2">
+              <CodeIcon className="h-4 w-4" />
+              <div className="text-sm font-semibold">Frontend</div>
             </div>
-            <h3 className="text-xl font-bold mb-4">Frontend</h3>
-            <ul className="space-y-2">
-              {frontendSkills.map((skill, index) => <li key={index} className="flex items-center">
-                  <span className="w-2 h-2 bg-indigo-600 rounded-full mr-2"></span>
-                  <span>{skill}</span>
-                </li>)}
-            </ul>
+            <SkillList skills={[...core.frontend]} />
           </div>
-          {/* Backend Skills */}
-          <div className="bg-white p-6 rounded-lg shadow-md transition-transform hover:scale-105">
-            <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
-              <ServerIcon className="w-8 h-8 text-indigo-600" />
+
+          <div className="rounded-xl border border-ink-3/15 bg-paper-1 p-5">
+            <div className="flex items-center gap-2">
+              <ServerIcon className="h-4 w-4" />
+              <div className="text-sm font-semibold">Backend</div>
             </div>
-            <h3 className="text-xl font-bold mb-4">Backend</h3>
-            <ul className="space-y-2">
-              {backendSkills.map((skill, index) => <li key={index} className="flex items-center">
-                  <span className="w-2 h-2 bg-indigo-600 rounded-full mr-2"></span>
-                  <span>{skill}</span>
-                </li>)}
-            </ul>
+            <SkillList skills={[...core.backend]} />
           </div>
-          {/* Database Skills */}
-          <div className="bg-white p-6 rounded-lg shadow-md transition-transform hover:scale-105">
-            <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
-              <DatabaseIcon className="w-8 h-8 text-indigo-600" />
+
+          <div className="rounded-xl border border-ink-3/15 bg-paper-1 p-5">
+            <div className="flex items-center gap-2">
+              <DatabaseIcon className="h-4 w-4" />
+              <div className="text-sm font-semibold">CS / Systems</div>
             </div>
-            <h3 className="text-xl font-bold mb-4">Database & CS</h3>
-            <ul className="space-y-2">
-              {databaseSkills.map((skill, index) => <li key={index} className="flex items-center">
-                  <span className="w-2 h-2 bg-indigo-600 rounded-full mr-2"></span>
-                  <span>{skill}</span>
-                </li>)}
-            </ul>
+            <SkillList skills={[...core.cs]} />
           </div>
-          {/* Other Skills */}
-          <div className="bg-white p-6 rounded-lg shadow-md transition-transform hover:scale-105">
-            <div className="w-14 h-14 bg-indigo-100 rounded-lg flex items-center justify-center mb-6">
-              <LayoutIcon className="w-8 h-8 text-indigo-600" />
+
+          <div className="rounded-xl border border-ink-3/15 bg-paper-1 p-5">
+            <div className="flex items-center gap-2">
+              <LayoutIcon className="h-4 w-4" />
+              <div className="text-sm font-semibold">Ops</div>
             </div>
-            <h3 className="text-xl font-bold mb-4">DevOps & Other</h3>
-            <ul className="space-y-2">
-              {otherSkills.map((skill, index) => <li key={index} className="flex items-center">
-                  <span className="w-2 h-2 bg-indigo-600 rounded-full mr-2"></span>
-                  <span>{skill}</span>
-                </li>)}
-            </ul>
+            <SkillList skills={[...core.ops]} />
           </div>
         </div>
-        <div className="mt-16 text-center">
-          <h3 className="text-2xl font-bold mb-6">Professional Skillset</h3>
-          <div className="flex flex-wrap justify-center gap-4">
-            {['Problem Solving', 'Team Leadership', 'Cross-functional Coordination', 'Product Management', 'Technical Planning', 'Entrepreneurship', 'Image Processing', 'AI Technologies', 'Market Validation'].map((skill, index) => <span key={index} className="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full text-sm font-medium">
-                {skill}
-              </span>)}
+
+        <div className="mt-8 rounded-xl border border-ink-3/15 bg-paper-1 p-5">
+          <div className="kicker">FAMILIAR</div>
+          <p className="mt-2 text-sm text-ink-2">
+            Things I’ve used enough to be dangerous:
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {familiar.map(s => (
+              <span key={s} className="chip">
+                {s}
+              </span>
+            ))}
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }

@@ -1,139 +1,122 @@
 import React from 'react';
-import { UserIcon, BriefcaseIcon, GraduationCapIcon, AwardIcon, FileTextIcon } from 'lucide-react';
-export function AboutSection() {
-  return <section id="about" className="py-16 md:py-24 bg-white">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-          <div className="w-20 h-1 bg-indigo-600 mx-auto mb-6"></div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Cornell University student and tech entrepreneur with experience in
-            AI, software engineering, and algorithmic trading
-          </p>
-        </div>
-        <div className="flex justify-center mb-10">
-          <a href="/Orazio_Petito_Resume_6_30_2025.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-md transition-colors shadow-md">
-            <FileTextIcon className="w-5 h-5 mr-2" />
-            Download Resume
-          </a>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h3 className="text-2xl font-bold mb-6 flex items-center">
-              <UserIcon className="mr-2 text-indigo-600" />
-              Get to know me!
-            </h3>
-            <div className="space-y-4 text-gray-700">
-              <p>
-                I'm a <strong>Computer Science student and entrepreneur</strong>{' '}
-                building innovative AI solutions. As the CEO and CTO of Pitchly
-                AI, I'm developing a generative-work platform that fuses slides,
-                images, and spreadsheets into a single browser tab.
-              </p>
-              <p>
-                Currently pursuing a{' '}
-                <strong>
-                  Bachelor of Arts in Computer Science with a Minor in Business
-                </strong>{' '}
-                at Cornell University. My coursework includes Functional
-                Programming, Data Structures, Object-Oriented Programming,
-                Mathematical Foundations of Computing, Calculus, and Linear
-                Algebra.
-              </p>
-              <p>
-                Beyond my technical work, I'm actively involved in the Cornell
-                community as Captain of the Rugby Football Club, where I lead a
-                team of 40+ players, coordinate with coaches, and organize
-                competitive matches across the Northeast. Rugby has taught me
-                valuable lessons about teamwork, resilience, and leadership
-                under pressure.
-              </p>
-              <p>
-                When I'm not coding or on the rugby pitch, I enjoy playing poker
-                - a game that sharpens my strategic thinking, risk assessment,
-                and decision-making skills. I find many parallels between poker
-                strategy and business decision-making.
-              </p>
-              <p>
-                I'm passionate about leveraging technology to solve real-world
-                problems and am always open to new opportunities for
-                collaboration and innovation.
-              </p>
+import { BriefcaseIcon, GraduationCapIcon, FileTextIcon } from 'lucide-react';
+
+type TimelineItem = {
+  title: string;
+  org: string;
+  when: string;
+  description: string;
+};
+
+const experience: TimelineItem[] = [
+  {
+    title: 'Co-Founder, CEO & CTO',
+    org: 'Pitchly AI',
+    when: 'May 2025 — Present',
+    description:
+      'Building a browser workspace for decks with a focus on speed, brand consistency, and deterministic editing.'
+  },
+  {
+    title: 'Software Engineering Intern',
+    org: 'Dasion AI',
+    when: 'Dec 2024 — Present',
+    description:
+      'Built an internal image editing tool enabling real-time visual previews of edits.'
+  },
+  {
+    title: 'Software Engineering Intern (ASCEND)',
+    org: 'LinkedIn',
+    when: 'Aug 2023 — May 2025',
+    description:
+      'Shipped product features in a cross-functional environment; learned what “production quality” actually means.'
+  }
+];
+
+const education: TimelineItem[] = [
+  {
+    title: 'B.A. Computer Science (Minor: Business)',
+    org: 'Cornell University',
+    when: 'Expected May 2027',
+    description:
+      'Relevant coursework: FP, DS&A, OOP, discrete math foundations, linear algebra, calculus.'
+  }
+];
+
+function Timeline({ items, icon: Icon }: { items: TimelineItem[]; icon: any }) {
+  return (
+    <div className="space-y-4">
+      {items.map(item => (
+        <div
+          key={item.title + item.org}
+          className="rounded-xl border border-ink-3/15 bg-paper-2 p-4"
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <Icon className="h-4 w-4 text-ink-2" />
+                <div className="text-sm font-semibold">{item.title}</div>
+              </div>
+              <div className="mt-1 text-sm text-ink-2">{item.org}</div>
             </div>
-            <a href="#contact" className="inline-block mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-md transition-colors shadow-md">
-              Contact Me
+            <div className="font-mono text-xs text-ink-3/70">{item.when}</div>
+          </div>
+          <p className="mt-3 text-sm text-ink-2">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function AboutSection() {
+  return (
+    <section id="about" className="section">
+      <div className="container-page">
+        <div className="mb-10">
+          <div className="kicker">ABOUT</div>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+            A little context
+          </h2>
+          <p className="mt-3 max-w-2xl text-ink-2">
+            I’m a Cornell CS student who likes building real products (not just
+            demos) — especially tools that compress time for high-output teams.
+          </p>
+          <div className="mt-6">
+            <a
+              href="/Orazio_Petito_Resume_6_30_2025.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary no-underline"
+            >
+              <FileTextIcon className="mr-2 h-4 w-4" />
+              Resume
             </a>
           </div>
-          <div className="bg-gray-50 p-8 rounded-lg shadow-md">
-            <h3 className="text-2xl font-bold mb-6 flex items-center">
-              <BriefcaseIcon className="mr-2 text-indigo-600" />
+        </div>
+
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+          <div>
+            <h3 className="mb-3 text-sm font-semibold tracking-wide text-ink-1">
               Experience
             </h3>
-            <div className="space-y-6">
-              <div className="border-l-4 border-indigo-600 pl-4">
-                <h4 className="text-xl font-semibold">Co-Founder, CEO & CTO</h4>
-                <p className="text-indigo-600">
-                  Pitchly AI (May 2025 - Present)
-                </p>
-                <p className="text-gray-600 mt-2">
-                  Founded and lead Pitchly AI — a browser workspace where one
-                  prompt creates branded decks, edits images, links charts, and
-                  locks styles behind SAML-secured permissions. Built on
-                  TypeScript, Tailwind, Recharts, and HyperFormula. Designed
-                  GPT-4o pipeline mapping JSON outlines into components, cutting
-                  deck-prep time by ~70%.
-                </p>
-              </div>
-              <div className="border-l-4 border-indigo-600 pl-4">
-                <h4 className="text-xl font-semibold">
-                  Software Engineering Intern
-                </h4>
-                <p className="text-indigo-600">
-                  Dasion AI (Dec 2024 - Present)
-                </p>
-                <p className="text-gray-600 mt-2">
-                  Built and deployed an internal image editing tool, enabling
-                  users to visualize edits in real time. Applied bilinear
-                  interpolation and projective geometry to improve workflows and
-                  reduce manual effort by 50%.
-                </p>
-              </div>
-              <div className="border-l-4 border-indigo-600 pl-4">
-                <h4 className="text-xl font-semibold">
-                  Software Engineering Intern
-                </h4>
-                <p className="text-indigo-600">
-                  LinkedIn (Aug 2023 - May 2025)
-                </p>
-                <p className="text-gray-600 mt-2">
-                  Selected for the prestigious ASCEND two-year program. Led a
-                  cross-functional team of 4 using Agile to ship high-quality
-                  features. Built scalable infrastructure for seamless
-                  networking sessions.
-                </p>
-              </div>
-            </div>
-            <h3 className="text-2xl font-bold mt-10 mb-6 flex items-center">
-              <GraduationCapIcon className="mr-2 text-indigo-600" />
+            <Timeline items={experience} icon={BriefcaseIcon} />
+          </div>
+          <div>
+            <h3 className="mb-3 text-sm font-semibold tracking-wide text-ink-1">
               Education
             </h3>
-            <div className="space-y-6">
-              <div className="border-l-4 border-indigo-600 pl-4">
-                <h4 className="text-xl font-semibold">
-                  Bachelor of Arts in Computer Science
-                </h4>
-                <p className="text-indigo-600">
-                  Cornell University, Ithaca, NY (Expected May 2027)
-                </p>
-                <p className="text-gray-600 mt-2">
-                  Minor in Business. Coursework includes Functional Programming,
-                  Data Structures, Object-Oriented Programming, Mathematical
-                  Foundations, Calculus I & II, Linear Algebra.
-                </p>
-              </div>
+            <Timeline items={education} icon={GraduationCapIcon} />
+
+            <div className="mt-6 rounded-xl border border-ink-3/15 bg-paper-1 p-4">
+              <div className="kicker">NOTE</div>
+              <p className="mt-2 text-sm text-ink-2">
+                If you want this to be more “minimal editorial”, we can replace
+                timeline cards with a single tight paragraph + 3 bulletproof
+                proof points.
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 }
