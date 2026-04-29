@@ -22,6 +22,7 @@ export const cornell: CornellRow[] = [
   {
     yr: 'Venture',
     ttl: 'Cornell eLab Startup Accelerator',
-    desc: "Cornell's student startup accelerator."
+    desc: "Cornell's student startup accelerator.",
+    href: 'https://elab.cornell.edu/'
   }
 ];

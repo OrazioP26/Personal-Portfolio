@@ -48,18 +48,20 @@ export function HomePage() {
       </Section>
 
       <Section label="§ 03 · Writing">
-        <Link to="/writing" className="row-link">
-          <div className="row-grid" style={{ animationDelay: '2200ms' }}>
-            <span className="row-yr">New</span>
-            <span className="row-ttl">
-              <span className="row-name">Thoughts &amp; takes</span>
-              <span className="row-role">Coming soon</span>
-            </span>
-            <span className="row-desc">
-              Notes on what I'm building, reading, and thinking about.{' '}
-              <span style={{ color: 'var(--accent)' }}>Read →</span>
-            </span>
-          </div>
+        <Link
+          to="/writing"
+          className="row-grid row-link"
+          style={{ animationDelay: '2200ms' }}
+        >
+          <span className="row-yr">New</span>
+          <span className="row-ttl">
+            <span className="row-name">Thoughts &amp; takes</span>
+            <span className="row-role">Coming soon</span>
+          </span>
+          <span className="row-desc">
+            Notes on what I'm building, reading, and thinking about.{' '}
+            <span style={{ color: 'var(--accent)' }}>Read →</span>
+          </span>
         </Link>
       </Section>
 
