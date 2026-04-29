@@ -50,6 +50,9 @@ export function Hero() {
         style={{
           gridColumn: '9 / span 4',
           aspectRatio: '4 / 5',
+          width: '100%',
+          maxWidth: 260,
+          justifySelf: 'end',
           overflow: 'hidden',
           background: '#f4f4f4',
           position: 'relative',
