@@ -2,66 +2,221 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/*
-  Minimal, high-contrast base styling.
-  Intentionally avoids “template gradients” and default Tailwind indigo vibes.
-*/
-
 :root {
   color-scheme: light;
+  --bg: #ffffff;
+  --ink: #0a0a0a;
+  --muted: #888888;
+  --rule: #e6e6e6;
+  --accent: #2540a8;
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
   }
 
   body {
-    @apply bg-paper-1 text-ink-1 antialiased;
-  }
-
-  ::selection {
-    background: rgba(0, 212, 255, 0.25);
+    font-family: 'Inter Tight', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   a {
-    @apply underline underline-offset-4 decoration-ink-3/30 hover:decoration-ink-1;
+    color: inherit;
+    text-decoration: none;
   }
 
-  /* Accessible focus ring */
-  :focus-visible {
-    outline: 2px solid rgba(0, 212, 255, 0.9);
-    outline-offset: 2px;
-    border-radius: 10px;
+  ::selection {
+    background: var(--accent);
+    color: white;
   }
 }
 
 @layer components {
-  .container-page {
-    @apply mx-auto w-full max-w-6xl px-4 sm:px-6;
+  .mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--muted);
   }
 
-  .section {
-    @apply py-14 md:py-20;
+  .frame {
+    min-height: 100vh;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 28px;
   }
 
-  .kicker {
-    @apply font-mono text-xs tracking-widest text-ink-3/70;
+  .frame-writing {
+    grid-template-rows: auto 1fr auto;
   }
 
-  .btn {
-    @apply inline-flex items-center justify-center rounded-xl px-4 py-2 text-sm font-medium transition;
+  .grid12 {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 16px;
   }
 
-  .btn-primary {
-    @apply btn bg-ink-1 text-paper-1 hover:bg-ink-2;
+  /* Section row (Work / Cornell / Writing teaser) */
+  .row-grid {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    transition: padding 0.3s cubic-bezier(0.2, 0.7, 0.2, 1), background 0.3s ease;
+    cursor: default;
+    opacity: 0;
+    transform: translateY(8px);
+    animation: rowin 0.7s ease forwards;
+  }
+  .row-grid:hover {
+    padding-left: 12px;
+  }
+  .row-grid:hover .row-ttl::after {
+    width: 24px;
+  }
+  .row-yr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+  }
+  .row-ttl {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    position: relative;
+  }
+  .row-ttl::after {
+    content: '';
+    display: inline-block;
+    height: 2px;
+    background: var(--accent);
+    width: 0;
+    margin-left: 10px;
+    vertical-align: middle;
+    transition: width 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .row-role {
+    font-size: 12px;
+    color: var(--muted);
+    margin-left: 8px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .row-hi .row-name {
+    color: var(--accent);
+  }
+  .row-desc {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .row-desc strong {
+    color: var(--accent);
+    font-weight: 600;
   }
 
-  .btn-ghost {
-    @apply btn bg-paper-2 text-ink-1 hover:bg-paper-3;
+  a.row-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
   }
+  a.row-link:hover .row-ttl {
+    color: var(--accent);
+  }
+}
 
-  .chip {
-    @apply inline-flex items-center rounded-full border border-ink-3/15 bg-paper-2 px-3 py-1 text-xs text-ink-2;
+/* Hero name character animation */
+.name-ch {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.name-ch.sp {
+  width: 0.22em;
+}
+.name-ch.accent {
+  color: var(--accent);
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes rowin {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+@keyframes blink-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 6px;
+  vertical-align: middle;
+  animation: blink 2s ease-in-out infinite;
+}
+
+@media (max-width: 720px) {
+  .frame {
+    padding: 18px;
+  }
+  .row-grid {
+    grid-template-columns: 60px 1fr;
+  }
+  .row-grid .row-desc {
+    grid-column: 1 / -1;
+    padding-left: 76px;
+    margin-top: -8px;
   }
 }
