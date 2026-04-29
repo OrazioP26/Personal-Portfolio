@@ -27,6 +27,7 @@ export function HomePage() {
             role={row.role}
             desc={row.desc}
             hi={row.hi}
+            href={row.href}
             delayMs={WORK_BASE_DELAY + i * ROW_STAGGER}
           />
         ))}
@@ -40,6 +41,7 @@ export function HomePage() {
             ttl={row.ttl}
             role={row.role}
             desc={row.desc}
+            href={row.href}
             delayMs={CORNELL_BASE_DELAY + i * ROW_STAGGER}
           />
         ))}
